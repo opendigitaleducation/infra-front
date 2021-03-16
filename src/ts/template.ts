@@ -59,7 +59,7 @@ export var template = {
 	},
 	open: function(name: string, view?: string)
 	{
-		return new Promise(async (resolve, reject) => {
+		return new Promise<void>(async (resolve, reject) => {
 			if (template._delegate) {
 				await template.getReadyPromise(name).promise;
 				//already open...
@@ -111,7 +111,7 @@ export var template = {
 	isEmpty: function(name){
 		return this.containers[name] === 'empty' || !this.containers[name];
 	},
-	getPath: (view) => {
+	getPath: function(view) {
         const split = $('#context').attr('src').split('-');
         const hash = split[split.length - 1].split('.')[0];
         return this.template.viewPath + view + '.html?hash=' + hash;

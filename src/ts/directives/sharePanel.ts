@@ -650,7 +650,7 @@ export const sharePanel = ng.directive('sharePanel', ['$rootScope', ($rootScope)
                             return Promise.reject(e);
                         }
                     }
-                    return new Promise((resolve, reject) => {
+                    return new Promise<void>((resolve, reject) => {
                         http().putJson('/' + currentApp + '/share/resource/' + resource._id, data)
                             .done(function (res) {
                                 $rootScope.$broadcast('share-updated', res['notify-timeline-array']);

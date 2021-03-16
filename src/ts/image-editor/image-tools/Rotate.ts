@@ -16,7 +16,7 @@ export class Rotate implements Tool{
         this.imageView.render();
         this.placeTools();
         
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             requestAnimationFrame(async () => {
                 this.imageView.backup().then(() => {
                     this.editingElement.find('.tools button').attr('disabled', false);

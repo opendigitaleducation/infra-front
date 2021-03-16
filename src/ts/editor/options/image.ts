@@ -338,11 +338,11 @@ export const image = {
                     zombieImage = undefined;
                     if(document.caretPositionFromPoint){
                         const rangeNode = document.caretPositionFromPoint(e.originalEvent.clientX, e.originalEvent.clientY).offsetNode;
-                        if(rangeNode.nodeType === 1 && rangeNode.tagName === 'SPAN'){
-                            if($(rangeNode).find('img').length){
-                                zombieImage = rangeNode.find('img')[0];
+                        if(rangeNode.nodeType === 1 && (rangeNode as HTMLElement).tagName === 'SPAN'){
+                            let imgs = $(rangeNode).find('img');
+                            if(imgs.length){
+                                zombieImage = imgs[0];
                             }
-
                         }
                     }
                 });

@@ -12,8 +12,8 @@ export class ToolbarPo {
 }
 
 export default new class EditorPo {
-    private contentSelector = `.drawing-zone`;
-    private toolbarPo = new ToolbarPo();
+    contentSelector = `.drawing-zone`;
+    toolbarPo = new ToolbarPo();
 
     waitForVisible(): WebdriverIO.Client<boolean> {
         return browser.waitForVisible(this.contentSelector);

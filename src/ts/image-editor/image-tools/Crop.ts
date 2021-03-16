@@ -70,7 +70,7 @@ export class Crop implements Tool{
         this.imageView.renderer.resize(this.imageView.sprite.width, this.imageView.sprite.height);
         this.imageView.render();
 
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             requestAnimationFrame(async () => {
                 await this.imageView.backup();
                 this.imageView.render();

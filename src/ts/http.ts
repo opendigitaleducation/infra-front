@@ -148,7 +148,7 @@ export var http = (function(){
 	};
 
 	Http.prototype.loadScript = function(url, data?:any, params?:any, requestName?:string): Promise<any> {
-		return new Promise((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			if(loadedScripts[url]){
 				resolve(loadedScripts[url]);
 				return;

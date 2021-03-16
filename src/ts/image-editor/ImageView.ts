@@ -15,7 +15,7 @@ export class ImageView{
     format: string;
 
     private paint(image: string): Promise<any>{
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             this.stage = new PIXI.Container();
             this.sprite = new PIXI.Sprite(
                 PIXI.loader.resources[image].texture
@@ -55,7 +55,7 @@ export class ImageView{
     }
 
     loadImage(image: HTMLImageElement, repaint = true): Promise<any>{
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             this.stage.removeChildren();
             this.sprite = new PIXI.Sprite(PIXI.Texture.from(image));
             this.stage.addChild(this.sprite);
@@ -90,7 +90,7 @@ export class ImageView{
 
     load(image: string, editingElement: any, format: string): Promise<any>{
         this.format = format;
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             this.editingElement = editingElement;
             const onload = () => {
                 this.paint(image)
@@ -117,7 +117,7 @@ export class ImageView{
     }
 
     loadBlob(blob: Blob, repaint = true): Promise<any>{
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             const imageUrl = URL.createObjectURL(blob);
             const image = new Image();
             image.src = imageUrl;
@@ -135,7 +135,7 @@ export class ImageView{
 
     undo(): Promise<any>{
         $(this.renderer.view).css({ opacity: 0 });
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             setTimeout(async () => {
                 this.historyIndex --;
                 if(this.appliedIndex > this.historyIndex){
@@ -150,7 +150,7 @@ export class ImageView{
     }
 
     backup(repaint = true, updateHistory = true): Promise<any>{
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             this.renderer.view.toBlob((blob) => {
                 this.render();
                 this.historyIndex ++;

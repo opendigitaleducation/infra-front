@@ -89,7 +89,7 @@ export class Resize implements Tool{
 
     apply(options?: any): Promise<any>{
         $(this.imageView.renderer.view).css({ opacity: 0 });
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             setTimeout(() => {
                 this.imageView.sprite.scale = new PIXI.Point(1, 1);
                 this.imageView.render();

@@ -78,7 +78,7 @@ export class Rights<T extends Shareable> {
     }
 
     async fromObject(obj: any, prefix: string): Promise<any> {
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             let resourceRights = obj.resource;
 
             let computeRights = () => {

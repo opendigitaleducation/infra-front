@@ -35,7 +35,7 @@ export var skin = {
 		return skin._onSkinReady;
 	},
 	loadDisconnected: async function(): Promise<any>{
-		return new Promise((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			var rand = Math.random();
 			http().get('/skin', { token: rand }).done((data) => {
 				this.skin = data.skin;
@@ -73,7 +73,7 @@ export var skin = {
 		if(this.themeConfPromise){
 			return this.themeConfPromise;
 		}
-		this.themeConfPromise = new Promise<any>((resolve, reject) => {
+		this.themeConfPromise = new Promise<void>((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open('get', '/assets/theme-conf.js');
 			xhr.onload = async () => {
@@ -96,7 +96,7 @@ export var skin = {
 		return this.themeConfPromise;
 	},
 	loadBookmarks: async function(){
-		return new Promise<any>((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			http().get('/userbook/preference/apps').done(function(data){
 				if(!data.preference){
 					data.preference = null;
@@ -149,7 +149,7 @@ export var skin = {
 	loadConnected: async function(): Promise<any>{
 		const rand = Math.random();
 		const that = this;
-		return new Promise((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			http().get('/theme').done(function(data){
 				that.skinName = data.skinName;
 				that.themeName = data.themeName;

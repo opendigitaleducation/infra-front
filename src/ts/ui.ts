@@ -1117,7 +1117,7 @@ export const ui = {
         scope.refreshAvatar();
     },
     scrollToId: function (id): Promise<void> {
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             //jquery doesn't like selecting elements with slashes in their id,
             //whereas native API doesn't care
             var targetElement = document.getElementById(id);

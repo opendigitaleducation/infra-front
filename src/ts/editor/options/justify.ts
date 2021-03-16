@@ -8,11 +8,15 @@ import {
 } from '../selection';
 import { findClosestBlockElement } from "../onPressDelete";
 
-function findBlockParent(node: Node) {
+function findBlockParent(node:Node):Node {
     if (node.nodeType === 1 && textNodes.indexOf(node.nodeName) === -1) {
         return node;
     }
-    if (node.attributes && node.attributes['contenteditable'] && node.nodeName === 'DIV') {
+    if (node.nodeType===Node.ELEMENT_NODE 
+        && (node as HTMLElement).attributes 
+        && (node as HTMLElement).attributes['contenteditable'] 
+        && node.nodeName === 'DIV'
+        ) {
         const newNode = document.createElement('div');
         node.appendChild(newNode);
         for (let i = 0; i < node.childNodes.length; i++) {

@@ -7,7 +7,7 @@ import { _ } from './libs/underscore/underscore';
 
 export let sniplets = {
     load: function (): Promise<any>{
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             if(this.sniplets.length){
                 resolve(this.sniplets);
                 return;

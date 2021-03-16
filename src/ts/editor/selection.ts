@@ -185,12 +185,12 @@ function getNormalizedEndOffset(node: Node): number {
 }
 
 export function findFirstChildTextNode(node: Node): Node {
-    return document.createNodeIterator(node, NodeFilter.SHOW_TEXT, null, false).nextNode();
+    return document.createNodeIterator(node, NodeFilter.SHOW_TEXT, null).nextNode();
 }
 
 export function findLatestChildTextNode(node: Node): Node {
     let lastNode, currentNode;
-    const ni = document.createNodeIterator(node, NodeFilter.SHOW_TEXT, null, false);
+    const ni = document.createNodeIterator(node, NodeFilter.SHOW_TEXT, null);
     while (currentNode = ni.nextNode()) {
         lastNode = currentNode;
     }
@@ -312,8 +312,8 @@ function applyCssToTextNode(node: Node, startOffset: number, endOffset: number, 
     return text;
 }
 
-function cancelCssOnNodeBranch(root: HTMLElement, style: any): HTMLElement {
-    const ni = document.createNodeIterator(root, NodeFilter.SHOW_ELEMENT, null, false);
+function cancelCssOnNodeBranch(root: Node, style: any): Node {
+    const ni = document.createNodeIterator(root, NodeFilter.SHOW_ELEMENT, null);
     const styleKeys = Object.keys(style);
 
     let currentNode: HTMLElement;

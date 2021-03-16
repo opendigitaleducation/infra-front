@@ -177,7 +177,7 @@ function convertNodeAndChangeAttributeToStyle(selector: string, tag: string, att
 }
 
 function removeComments(root: HTMLElement): HTMLElement {
-    const ni = document.createNodeIterator(root, NodeFilter.SHOW_COMMENT, null, false);
+    const ni = document.createNodeIterator(root, NodeFilter.SHOW_COMMENT, null);
     let currentNode;
     while (currentNode = ni.nextNode()) {
         currentNode.parentNode.removeChild(currentNode);
@@ -540,16 +540,16 @@ export let RTE = {
                         }, 100);
                     });
 
-                    document.execCommand("enableObjectResizing", false, false);
-                    document.execCommand("enableInlineTableEditing", null, false);
-                    document.execCommand("insertBrOnReturn", false, true);
+                    document.execCommand("enableObjectResizing", false, "false");
+                    document.execCommand("enableInlineTableEditing", null, "false");
+                    document.execCommand("insertBrOnReturn", false, "true");
 
                     element.addClass('edit');
                     var editZone = element.find('[contenteditable=true]');
                     var htmlZone = element.children('textarea');
                     var highlightZone = element.children('code');
                     var toolbarElement = element.children('editor-toolbar');
-                    document.execCommand("styleWithCSS", false, true);
+                    document.execCommand("styleWithCSS", false, "true");
 
                     if(attributes.inline !== undefined){
                         element.children('editor-toolbar').addClass('inline');

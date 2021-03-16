@@ -1,6 +1,6 @@
 export default new class BlogPo {
-    private createPostSelector = '[resource=blog][authorize=createPost]';
-    private cancelSelector = 'button.cancel';
+    createPostSelector = '[resource=blog][authorize=createPost]';
+    cancelSelector = 'button.cancel';
 
     waitForVisible(): WebdriverIO.Client<boolean> {
         return browser.waitForVisible(this.createPostSelector);
