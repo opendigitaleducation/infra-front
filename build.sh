@@ -35,7 +35,11 @@ install () {
 }
 
 watch () {
-  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "node_modules/gulp/bin/gulp.js watch --springboard=/home/node/$SPRINGBOARD"
+  docker-compose run \
+    --rm \
+    -v $PWD/../$SPRINGBOARD:/home/node/$SPRINGBOARD \
+    -u "$USER_UID:$GROUP_GID" \
+    node sh -c "node_modules/gulp/bin/gulp.js watch --springboard=/home/node/$SPRINGBOARD"
 }
 
 publish () {
