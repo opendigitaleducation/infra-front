@@ -2619,12 +2619,12 @@ module.directive('cguLightbox', [function () {
 		}
 	}
 }]);
-model.one("bootstrap", async () => {
-	const shouldRevalidate = await Me.shouldRevalidate();
-	if (shouldRevalidate) {
-		injectIntoSelector("body", "<cgu-lightbox></cgu-lightbox>");
-	}
-})
+// model.one("bootstrap", async () => {
+// 	const shouldRevalidate = await Me.shouldRevalidate();
+// 	if (shouldRevalidate) {
+// 		injectIntoSelector("body", "<cgu-lightbox></cgu-lightbox>");
+// 	}
+// })
 module.directive('onEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
